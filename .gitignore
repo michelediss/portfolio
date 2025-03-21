@@ -1,0 +1,29 @@
+# Dipendenze di Node.js
+node_modules/
+
+# Output di build
+dist/
+
+# File di log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# File di ambiente (personalizza secondo necessità)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# File specifici del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Cartelle/Impostazioni degli editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
