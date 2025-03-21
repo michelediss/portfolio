@@ -88,8 +88,13 @@ export default {
           text: "Vue, WordPress, Bootstrap, Tailwind, <br>Figma, Adobe, UI design, Typography, <br> GSAP, Sass, Git, SEO.",
         },
         {
+<<<<<<< Updated upstream
           title: "Swell Scales",
           text: `<p>I'm author of Swell Scales, <br>a design system for web devs. <br>Take a look on my <span><a class="underline underline-offset-8" href="https://github.com/michelediss?tab=repositories" target="_blank"><strong>GitHub.</strong></a></span></p>`,
+=======
+          title: "The Logical Theme",
+          text: `<p>I'm author of The Logical Theme, <br>a sharp WordPress theme for devs. <br>Take a look on my <span><a class="underline underline-offset-8" href="https://github.com/michelediss/the-logical-theme" target="_blank"><strong>GitHub.</strong></a></span></p>`,
+>>>>>>> Stashed changes
         },
         {
           title: "Let's play!",

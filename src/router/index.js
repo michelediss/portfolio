@@ -1,8 +1,14 @@
 // router/index.js
 
+<<<<<<< Updated upstream
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../components/home.vue';
 import PortfolioPage from '../components/portfolio.vue';
+=======
+import { createRouter, createWebHashHistory } from 'vue-router';
+import HomePage from '../components/Home.vue';
+import PortfolioPage from '../components/Portfolio.vue';
+>>>>>>> Stashed changes
 import ResumePage from '../components/Resume.vue';
 import PhilosophyPage from '../components/Philosophy.vue';
 import { getRandomHSLuvColor } from '../utils/colorGenerator'; // Importa la funzione di generazione colore
