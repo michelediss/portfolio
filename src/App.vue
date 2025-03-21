@@ -1,23 +1,18 @@
 <template>
-  <!-- Usa la direttiva v-touch:swipe.top per rilevare lo swipe up -->
-  <main class="px-5" v-touch:swipe.top="onSwipeUp">
+  <main class="px-5" >
     <router-view></router-view>
   </main>
+  <MenuComponent />
 </template>
 
 <script>
+import MenuComponent from './components/MenuComponent.vue';
+
 export default {
-  data() {
-    return {};
-  },
-  methods: {
-    onSwipeUp() {
-      // Aggiungi qui la logica che vuoi eseguire quando viene rilevato uno swipe up
-    },
-  },
-  mounted() {
-    // Codice eseguito al montaggio del componente, se necessario
-  },
+  name: 'App',
+  components: {
+    MenuComponent, 
+  }
 };
 </script>
 

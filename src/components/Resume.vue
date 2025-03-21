@@ -1,86 +1,128 @@
 <template>
-
-  <section class="container w-full lg:w-5/6 mx-auto px-4">
-
+  <section class="container w-full lg:w-5/6 xl:4/6 mx-0 md:mx-auto">
     <div class="flex-none">
-    <HeaderComponent :pageTitle="pageTitle" ref="header" />
-  </div>
-
-  <div class="intro-resume container mt-24 mb-16 w-full flex justify-center flex-wrap" ref="introResume">
-    <p class="text-color text-xl md:text-2xl paragraph text-center mb-12">
-      My name is Michele Paolino, I'm a web designer and front-end developer.
-      My job involves designing and developing modern, lightweight, and high-performance web solutions.
-      I apply to my works the knowledge I have gained from studying the processes that govern
-      visual communication in its formal and functional aspects.
-    </p>
-    <a href="#" v-hover-animate target="_blank" class="text-color border-color button rounded-full px-8 py-1 text-lg">Download CV</a>
-  </div>
-
-  <div class="work-history" ref="workHistory">
-    <div class="">
-      <h2 class="text-color mt-20 mb-12 heading uppercase text-3xl">
-        Work history
-      </h2>
-      <div class="bg-secondary-color h-0.5 w-full opacity-50"></div>
+      <HeaderComponent :pageTitle="pageTitle" ref="header" />
     </div>
 
-    <div class="mb-12 flex flex-wrap">
-      <div v-for="(item, index) in items" :key="index">
-        <div class="block md:flex py-4 my-4">
-          <div class="w-full md:w-1/3 lg:w-1/4 pt-2">
-            <h2 class="text-color text-xl heading mb-2">{{ item.job }}</h2>
-          </div>
-          <div class="w-full md:w-2/3 lg:w-3/4">
-            <h3 class="text-color text-lg mb-1 paragraph">{{ item.position }}</h3>
-            <p class="text-color text-base paragraph">
-              {{ item.description }}
-            </p>
-          </div>
-        </div>
+    <div
+      class="intro-resume container mt-24 mb-16 w-full flex justify-start md:justify-center flex-wrap"
+      ref="introResume"
+    >
+      <p class="text-color text-xl md:text-2xl paragraph text-start md:text-center mb-12">
+        My name is Michele Paolino, I'm a web designer and developer. My job involves designing and developing
+        modern, lightweight, and high-performance web solutions. I apply to my works the knowledge I have gained from
+        studying the processes that govern visual communication in its formal and functional aspects.
+      </p>
 
+      <div class="dropdown-container relative inline-block">
+        <button
+          v-hover-animate
+          @click="toggleDropdown"
+          class="paragraph text-color border-color button rounded-full px-8 py-1 text-lg"
+        >
+          Download CV
+        </button>
+        <div
+          ref="dropdownMenu"
+          :class="['dropdown-menu w-full mt-2 shadow-lg backdrop-blur-sm bg-white/50 overflow-hidden', { show: isDropdownVisible }]"
+        >
+          <ul>
+            <li>
+              <a href="./download/Michele_Paolino_CV_ENG.pdf" target="_blank" class="block px-4 pt-2 pb-1 text-md color-black hover:bg-dark hover:color-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  class="inline fill-black mr-1 -mt-1 bi bi-download"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"
+                  />
+                  <path
+                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"
+                  /></svg >
+                PDF English</a>
+            </li>
+            <li>
+              <a href="./download/Michele_Paolino_CV_ITA.pdf" target="_blank" class="block px-4 pt-1 pb-2 text-md color-black hover:bg-dark hover:color-white"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  class="inline fill-black mr-1 -mt-1 bi bi-download"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"
+                  />
+                  <path
+                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"
+                  /></svg>
+                PDF Italiano</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-history" ref="workHistory">
+      <div class="">
+        <h2 class="text-color mt-20 mb-12 heading uppercase text-3xl">Work history</h2>
         <div class="bg-secondary-color h-0.5 w-full opacity-50"></div>
       </div>
-    </div>
-  </div>
 
-  <div class="mx-auto tech-stack w-full" ref="techStack">
-    <div class="">
-      <h2 class="text-color mt-20 mb-12 heading uppercase technical-skills text-xl">
-        Tech stack
-      </h2>
-    </div>
+      <div class="mb-12 flex flex-wrap">
+        <div v-for="(item, index) in items" :key="index">
+          <div class="block md:flex py-4 my-4">
+            <div class="w-full md:w-1/3 lg:w-1/4 pt-2">
+              <h2 class="text-color text-xl heading mb-2">{{ item.job }}</h2>
+            </div>
+            <div class="w-full md:w-2/3 lg:w-3/4">
+              <h3 class="text-color text-lg mb-1 paragraph uppercase">{{ item.position }}</h3>
+              <p class="text-color text-base paragraph">{{ item.description }}</p>
+            </div>
+          </div>
 
-    <div class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <div v-for="(skill, index) in skills" :key="index">
-        <h3 class="text-color text-base heading mb-2 uppercase">{{ skill.scope }}</h3>
-        <p class="text-color text-lg paragraph">{{ skill.skill }}</p>
+          <div class="bg-secondary-color h-0.5 w-full opacity-50"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="flex-none">
-      <SocialComponent svgClass="fill" />
+    <div class="mx-auto tech-stack w-full" ref="techStack">
+      <div class="">
+        <h2 class="text-color mt-20 mb-12 heading uppercase technical-skills text-xl">Expertise Areas</h2>
+      </div>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div v-for="(skill, index) in skills" :key="index">
+          <h3 class="text-color text-base heading mb-2 uppercase scope opacity-75">{{ skill.scope }}</h3>
+          <p class="text-color text-lg paragraph">{{ skill.skill }}</p>
+        </div>
+      </div>
     </div>
 
-
-</section>
-<MenuComponent />
-
+    <div class="flex-none">
+      <SocialComponent svgClass="fill" />
+    </div>
+  </section>
+  <MenuComponent />
 </template>
 
 <script>
 import { gsap } from "gsap";
+import { nextTick } from "vue"; // Importa nextTick da Vue
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 import SocialComponent from "@/components/SocialComponent.vue";
-
 
 export default {
   name: "Resume",
   components: {
     HeaderComponent,
     MenuComponent,
-    SocialComponent
+    SocialComponent,
   },
   data() {
     return {
@@ -90,29 +132,33 @@ export default {
           job: "Dopolavoro ",
           position: "Web developer",
           description:
-            "Specialized in creating websites that are both visually stunning and functionally robust, maintaining the firm’s reputation for design excellence. Continuously explored and implemented new web design trends, keeping the firm’s offerings innovative and competitive. Integrated technical and design expertise to achieve cohesive and engaging user experiences.",
+            "I specialize in creating websites that are both visually stunning and functionally robust, maintaining the firm's reputation for design excellence. I continuously explore and implement new web design trends, ensuring our offerings remain innovative and competitive. By integrating technical and design expertise, I create cohesive and engaging user experiences.",
         },
         {
           job: "Sari Advertising",
           position: "Web designer & developer",
           description:
-            "Integral member of a team dedicated to producing advanced web designs and strategic advertising solutions. Developed SEO-optimized websites to maximize client visibility and improve user engagement and conversion rates. Collaborated with cross-functional teams to ensure a unified and effective brand message.",
+            "I played an integral role in a team focused on delivering advanced web designs and strategic advertising solutions. I developed SEO-optimized websites to enhance client visibility and improve user engagement and conversion rates. I worked closely with cross-functional teams to ensure a unified and effective brand message.",
         },
         {
           job: "Becoming Lab",
           position: "Web designer & developer",
           description:
-            "Led a team in creating innovative web applications and marketing solutions, with a focus on elevating clients’ digital presence. Managed projects from concept to completion, emphasizing adherence to timelines without compromising quality. Built and maintained strong client relationships to ensure projects align with their business goals and brand identity.",
+            "I led a team in creating web applications and marketing solutions, with a focus on enhancing clients' digital presence. I managed projects from concept to completion, ensuring timelines were met without compromising on quality. I built and maintained strong client relationships to align projects with their business goals and brand identity.",
         },
       ],
       skills: [
         {
-          scope: "Front-end Development",
-          skill: "Vue.js, Bootstrap, Tailwind, Sass, PHP, hsluv",
+          scope: "Frontend",
+          skill: "Vue.js, React, Tailwind CSS, Bootstrap",
+        },
+        {
+          scope: "Backend",
+          skill: "Node.js, PHP",
         },
         {
           scope: "CMS",
-          skill: "WordPress, Prestashop",
+          skill: "WordPress, PrestaShop",
         },
         {
           scope: "Design & Prototyping",
@@ -124,29 +170,108 @@ export default {
         },
         {
           scope: "Animation & Effects",
-          skill: "GreenSock Animation Platform (GSAP)",
+          skill: "GreenSock Animation Platform (GSAP), anime.js",
         },
         {
           scope: "Version Control",
-          skill: "Git, GitHub",
+          skill: "Git",
         },
       ],
+      isDropdownVisible: false,
     };
   },
+  methods: {
+    toggleDropdown() {
+      this.isDropdownVisible = !this.isDropdownVisible;
+      if (this.isDropdownVisible) {
+        this.fadeInDropdown();
+      } else {
+        this.fadeOutDropdown();
+      }
+    },
+    fadeInDropdown() {
+      // Controllo per verificare che il riferimento non sia nullo
+      if (this.$refs.dropdownMenu) {
+        gsap.to(this.$refs.dropdownMenu, {
+          opacity: 1,
+          y: 0,
+          display: "block",
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      } else {
+        console.warn("Riferimento dropdownMenu non trovato per fadeIn.");
+      }
+    },
+    fadeOutDropdown() {
+      // Controllo per verificare che il riferimento non sia nullo
+      if (this.$refs.dropdownMenu) {
+        gsap.to(this.$refs.dropdownMenu, {
+          opacity: 0,
+          y: 0,
+          display: "none",
+          duration: 0.25,
+          ease: "linear.in",
+        });
+      } else {
+        console.warn("Riferimento dropdownMenu non trovato per fadeOut.");
+      }
+    },
+    closeDropdown(event) {
+      if (!event.target.closest(".dropdown-container")) {
+        this.isDropdownVisible = false;
+        if (this.$refs.dropdownMenu) { // Aggiunto controllo
+          this.fadeOutDropdown(); 
+        }
+      }
+    },
+  },
   mounted() {
-    // Timeline GSAP per animazioni sequenziali
-    const tl = gsap.timeline();
+    window.addEventListener("click", this.closeDropdown);
 
-    // Aggiunta delle animazioni alla timeline
-    tl.from(this.$refs.introResume, { opacity: 0, y: 50, duration: 0.8 }, "-=0.4")
-      .from(this.$refs.workHistory, { opacity: 0, y: 50, duration: 0.8 }, "-=0.4")
-      .from(this.$refs.techStack, { opacity: 0, y: 50, duration: 0.8 }, "-=0.4");
-  }
+    nextTick(() => { // Usa nextTick al posto di Vue.nextTick
+      const tl = gsap.timeline();
+
+      if (this.$refs.introResume && this.$refs.workHistory && this.$refs.techStack) {
+        tl.from(this.$refs.introResume, { opacity: 0, y: 50, duration: 0.8, ease: 'power2.out' }, "-=0.2")
+          .from(this.$refs.workHistory, { opacity: 0, y: 50, duration: 0.8, ease: 'power2.out' }, "-=0.6")
+          .from(this.$refs.techStack, { opacity: 0, y: 50, duration: 0.8, ease: 'power2.out' }, "-=0.2");
+          tl.delay(1); // Ritarda l'intera animazione di 1 secondo (modifica a piacere)
+
+      } else {
+        console.warn("Uno o più riferimenti non sono stati trovati per la timeline GSAP.");
+      }
+    });
+
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.closeDropdown);
+  },
 };
 </script>
 
 <style scoped>
-.technical-skills {
+.technical-skills, .scope {
   text-transform: uppercase !important;
+}
+
+.dropdown-menu {
+  display: none; /* Nascondi il dropdown di default */
+  position: absolute;
+  z-index: 10; /* Assicurati che il dropdown sia sopra gli altri elementi */
+  border-radius: 0.375rem; /* Stile del bordo arrotondato */
+  opacity: 0; /* Inizia nascosto per l'animazione */
+}
+
+.dropdown-menu.show {
+  display: block; /* Mostra il dropdown quando la classe "show" è presente */
+}
+
+.dropdown-menu a {
+  transition: all 0.2s linear !important;
+}
+
+.dropdown-menu svg {
+  transition: all 0.2s linear !important;
 }
 </style>

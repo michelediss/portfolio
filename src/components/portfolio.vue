@@ -1,5 +1,5 @@
 <template>
-  <section class="container w-full mx-auto px-4 min-h-screen flex flex-col space-between">
+  <section class="container w-full mx-auto min-h-screen flex flex-col space-between">
     <div class="flex-none mb-16">
       <HeaderComponent :pageTitle="pageTitle" ref="header" />
     </div>
@@ -12,10 +12,10 @@
               <h1 class="text-2xl lg:text-2xl heading">{{ project.name }}</h1>
             </div>
             <div class="w-full lg:w-8/12 flex">
-              <div class="w-1/2 justify-self-start lg:justify-self-center text-start lg:text-center flex justify-start lg:justify-center items-end lg:items-center mt-3 md:mt-0">
+              <div class="w-6/12 justify-self-start lg:justify-self-center text-start lg:text-center flex justify-start lg:justify-center items-end lg:items-center mt-3 md:mt-0">
                 <h5 class="uppercase text-base paragraph">{{ project.role }}</h5>
               </div>
-              <div class="w-1/2 text-end flex justify-end items-end">
+              <div class="w-6/12 text-end flex justify-end items-end">
                 <a :href="project.url" target="_blank" v-hover-animate rel="noopener noreferrer" class="button text-base paragraph border-2 border-color rounded-full px-8 py-1">
                   Check it out!
                 </a>
@@ -30,7 +30,6 @@
       <SocialComponent svgClass="fill" />
     </div>
   </section>
-  <MenuComponent />
 
 </template>
 
@@ -48,46 +47,35 @@ export default {
     SocialComponent
   },
   data() {
+    
     return {
       pageTitle: "Portfolio",
       projects: [
         {
-          name: "Hexenschuhe",
-          role: "visual design / developing",
-          url: "https://hexenschuhe.com",
-        },
-        {
           name: "Je So' Pazzo",
-          role: "visual design / developing",
+          role: "just code",
           url: "https://www.jesopazzo.org",
         },
         {
           name: "Dubstone",
-          role: "visual design / developing",
+          role: "design & code",
           url: "https://www.dubstone.it",
         },
         {
-          name: "L'angolo fiorito",
-          role: "visual design / developing",
-          url: "https://langolofioritobella.it",
+          name: "Alessandra Piezzo",
+          role: "just code",
+          url: "https://alessandrapiezzo.com/",
         },
         {
-          name: "Caffé Seddio",
-          role: "developing",
-          url: "https://caffeseddio.com/",
+          name: "Resta Abitante",
+          role: "design & code",
+          url: "https://restabitante.org/",
         },
         {
-        name: "Buy and rent",
-        role: "visual design / developing",
-        url: "https://buyandrent.it/",
+          name: "Addolorata",
+          role: "just code",
+          url: "https://addolorata.lol/",
         },
-        {
-        name: "Becoming lab",
-        role: "visual design / developing",
-        url: "https://becominglab.it",
-        },
-        
-
       ],
     };
   },
@@ -99,6 +87,7 @@ export default {
     this.$refs.mainContent.querySelectorAll('.row-container').forEach((row, index) => {
       tl.from(row, { opacity: 0, y: 50, duration: 0.4 }, "-=0.2");
     });
+    tl.delay(1); // Ritarda l'intera animazione di 1 secondo (modifica a piacere)
   }
 };
 </script>

@@ -5,45 +5,31 @@ import router from './router';
 import './assets/styles/tailwind.css';
 import hoverAnimate from './directives/hoverAnimate';
 import { register } from 'swiper/element/bundle';
-import PullToRefresh from 'pulltorefreshjs';
+import { handleDoubleTap } from './router'; 
 
-// Registrazione della direttiva touch con un listener passive
-const touchDirective = {
-  beforeMount(el, binding) {
-    const handleSwipe = (event) => {
-      if (event.type === 'swipe' && binding.arg === 'top') {
-        binding.value();
-      }
-    };
-    // Imposta l'event listener come passive
-    el.addEventListener('touchmove', handleSwipe, { passive: true });
-  },
-  unmounted(el) {
-    el.removeEventListener('touchmove');
-  }
-};
 
 register();
 
 const app = createApp(App);
 
+// Variabili per gestire il double tap
+let lastTap = 0;
+const doubleTapTimeout = 300;
+
+// Listener globale per il double tap
+document.addEventListener('touchstart', function () {
+  const currentTime = new Date().getTime();
+  const tapInterval = currentTime - lastTap;
+
+  if (tapInterval < doubleTapTimeout && tapInterval > 0) {
+    handleDoubleTap(); // Esegui la funzione di double tap
+  }
+
+  lastTap = currentTime;
+});
+
 // Usa la direttiva personalizzata
 app.directive('hover-animate', hoverAnimate);
-app.directive('touch', touchDirective);
+
 app.use(router);
 app.mount('#app');
-
-// Configura PullToRefresh per ricaricare la pagina senza mostrare i messaggi di refreshing
-PullToRefresh.init({
-  mainElement: 'body',
-  onRefresh() {
-    window.location.reload();
-  },
-  instructionsPullToRefresh: '',
-  instructionsReleaseToRefresh: '',
-  instructionsRefreshing: '',
-  distThreshold: 60,
-  distMax: 80,
-  distReload: 50,
-  refreshTimeout: 50,
-});

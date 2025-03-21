@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:700|Playfair+Display&display=swap');
+
+.style-4 .paragraph {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.44;
+}
+
+.style-4 .heading {
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    line-height: 0.96;
+    text-transform: none;
+}
+       

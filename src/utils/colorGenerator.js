@@ -79,8 +79,8 @@ export function getRandomHSLuvColor() {
   lastHue = hue;
 
   // Genera valori di saturazione e luminosità per il colore di background
-  const saturation = Math.floor(Math.random() * (90 - 35 + 1)) + 35;
-  const lightness = Math.floor(Math.random() * (65 - 35 + 1)) + 35;
+  const saturation = Math.floor(Math.random() * (95 - 30 + 1)) + 35;
+  const lightness = Math.floor(Math.random() * (70 - 30 + 1)) + 35;
 
   const conv = new Hsluv();
   
@@ -99,7 +99,7 @@ export function getRandomHSLuvColor() {
 
   // Calcolo deterministico della saturazione e luminosità per il foreground nero
   conv.hsluv_s = calculateValueBasedOnContrast(contrastThreshold, 80, 100);
-  conv.hsluv_l = calculateValueBasedOnContrast(contrastThreshold, 10, 25);
+  conv.hsluv_l = calculateValueBasedOnContrast(contrastThreshold, 10, 20);
   conv.hsluvToHex();
   const blackForegroundHexColor = conv.hex;
 
@@ -155,7 +155,13 @@ export function getRandomHSLuvColor() {
     .border-menu-color { border-color: ${foregroundMenuColor}; }
     .bg-secondary-menu-color { background-color: ${foregroundMenuColor}; }
     .fill-black { fill: ${blackForegroundHexColor}; }
+    .color-black { color: ${blackForegroundHexColor}; }
+    .color-white { color: ${whiteForegroundHexColor}; }
+    .bg-dark { background-color: ${blackForegroundHexColor}; }
     .fill-menu { fill: ${foregroundMenuColor}; }
+    .dropdown-menu a:hover { color: ${whiteForegroundHexColor}; }
+    .dropdown-menu a:hover svg { fill: ${whiteForegroundHexColor}; }
+    .dropdown-menu a:hover { background-color: ${blackForegroundHexColor}; }
   `;
   document.head.appendChild(styleElement);
 

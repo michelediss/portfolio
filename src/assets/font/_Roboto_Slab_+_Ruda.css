@@ -1,0 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda&display=swap');
+
+.style-9 .paragraph {
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.44;
+}
+
+.style-9 .heading {
+    font-family: 'Ruda', sans-serif;
+    font-weight: 400;
+    line-height: 1.00;
+    text-transform: none;
+}
+ 

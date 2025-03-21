@@ -1,9 +1,9 @@
 <template>
 
   <div
-    class="hamburger-container z-50 fixed bottom-3.5 right-3.5 shadow-lg backdrop-blur-sm bg-white/50 container flex justify-center p-4 items-center rounded-full inline-block w-auto">
-    <button class="hamburger flex items-center" @click="toggleMenu">
-      <svg class="hamburger-icon fill-black" width="30px" height="30px" viewBox="0 0 12 12"
+    class="hamburger-container z-50 fixed bottom-5 right-3.5 container inline-block w-auto">
+    <button ref="menuButton" id="hamburger-menu" aria-label="Hamburger menu" class="hamburger p-4 shadow-lg backdrop-blur-sm rounded-full bg-white/50 flex items-center" @click="toggleMenu">
+      <svg class="hamburger-icon fill-black" width="20px" height="20px" viewBox="0 0 12 12"
         enable-background="new 0 0 12 12" id="hamburger" version="1.1" xml:space="preserve"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g>
@@ -16,48 +16,48 @@
   </div>
 
   <!-- Menu Full Screen -->
-  <div ref="modal" class="menu-fullscreen flex flex-col justify-between min-h-screen fixed inset-0 bg-menu-color z-40">
+  <div ref="modal" class="px-4 menu-fullscreen flex flex-col justify-between min-h-screen fixed inset-0 bg-menu-color z-40">
 
     <header>
       <nav id="nav-back" class="flex pt-6 w-full lg:w-5/6 mx-auto">
-        <div class="flex justify-center w-full">
+        <div class="flex justify-start md:justify-center w-full">
           <div class="title-page-container">
-            <h2 ref="title" class="title-page-text text-xl heading text-menu-color opacity-0">Menu</h2>
+            <h1 ref="title" class="title-page-text text-2xl 2xl:text-3xl heading text-menu-color opacity-0">Menu</h1>
             <div ref="underline" class="title-page-underline h-0.5 bg-secondary-menu-color w-0"></div>
           </div>
         </div>
       </nav>
     </header>
 
-    <div class="menu-content flex flex-col items-center justify-center text-white">
-      <ul class="text-center" ref="menuItems">
-        <li class="paragraph my-4 menu-item-li">
+    <div class="menu-content flex flex-col items-start md:items-center text-white">
+      <ul class="text-start md:text-center" ref="menuItems">
+        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/" class="text-4xl md:text-5xl text-menu-color my-0"
-              @click.native="toggleMenu">Home</router-link>
+            <router-link to="/" class="text-4xl md:text-5xl xl:text-4xl 2xl:text-5xl text-menu-color my-0"
+              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Home</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
         </li>
-        <li class="paragraph my-4 menu-item-li">
+        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/portfolio" class="text-4xl md:text-5xl text-menu-color my-0"
-              @click.native="toggleMenu">Portfolio</router-link>
-            <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
-          </div>
-
-        </li>
-        <li class="paragraph my-4 menu-item-li">
-          <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/resume" class="text-4xl md:text-5xl text-menu-color my-0"
-              @click.native="toggleMenu">Resume</router-link>
+            <router-link to="/portfolio" class="text-4xl md:text-5xl xl:text-4xl 2xl:text-5xl text-menu-color my-0"
+              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Portfolio</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
         </li>
-        <li class="paragraph my-4 menu-item-li">
+        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/vision" class="text-4xl md:text-5xl text-menu-color my-0"
-              @click.native="toggleMenu">Vision</router-link>
+            <router-link to="/resume" class="text-4xl md:text-5xl xl:text-4xl 2xl:text-5xl text-menu-color my-0"
+              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Resume</router-link>
+            <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
+          </div>
+
+        </li>
+        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
+          <div class="inline-block w-auto menu-item-wrapper">
+            <router-link to="/vision" class="text-4xl md:text-5xl xl:text-4xl 2xl:text-5xl text-menu-color my-0"
+              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Vision</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
@@ -89,62 +89,69 @@ export default {
     };
   },
   methods: {
-  toggleMenu() {
-    this.isModalOpen = !this.isModalOpen;
+    toggleMenu() {
+  this.isModalOpen = !this.isModalOpen;
 
-    if (this.isModalOpen) {
-      document.querySelector('.hamburger-icon').classList.add('is-open');
-      document.body.classList.add('no-scroll');
+  // Accedi correttamente all'elemento SVG del pulsante hamburger usando `this.$refs`
+  const hamburgerIcon = this.$refs.menuButton.querySelector('.hamburger-icon');
 
-      this.$nextTick(() => {
-        if (this.$refs.modal) {
-          gsap.fromTo(
-            this.$refs.modal,
-            { y: '-100%' },
-            { y: '0%', duration: 0.5, ease: "power2.out", onComplete: () => this.animateTitleAndUnderline() }
-          );
-        }
-
-        if (this.$refs.menuItems && this.$refs.menuItems.children.length > 0) {
-          gsap.fromTo(
-            this.$refs.menuItems.children,
-            { x: -50, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.5, delay: 0.5, stagger: 0.1, ease: "power2.out" }
-          );
-        }
-
-        if (this.$refs.footerIcons) {
-          gsap.fromTo(
-            this.$refs.footerIcons,
-            { opacity: 0 },  // Inizia con opacità 0 e spostato leggermente verso il basso
-            { opacity: 1, duration: 0.5, ease: "power2.out", delay: 1.2 }  // Ritarda per sincronizzarsi con le altre animazioni
-          );
-        }
-      });
-
-    } else {
-      document.querySelector('.hamburger-icon').classList.remove('is-open');
-      document.body.classList.remove('no-scroll');
-
-      if (this.$refs.modal) {
-        gsap.to(this.$refs.modal, {
-          y: '-100%',
-          duration: 0.5,
-          ease: "power1.in",
-          onComplete: () => this.resetTitleAndUnderline()
-        });
-      }
-
-      // Aggiungi un'animazione di uscita per footerIcons quando si chiude il menu
-      if (this.$refs.footerIcons) {
-        gsap.to(this.$refs.footerIcons, {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power1.in"
-        });
-      }
+  if (this.isModalOpen) {
+    if (hamburgerIcon) {
+      hamburgerIcon.classList.add('is-open');  // Aggiungi la classe .is-open
     }
-  },
+    document.body.classList.add('no-scroll');
+
+    this.$nextTick(() => {
+      if (this.$refs.modal) {
+        gsap.fromTo(
+          this.$refs.modal,
+          { y: '-100%' },
+          { y: '0%', duration: 0.4, ease: "power2.out", onComplete: () => this.animateTitleAndUnderline() }
+        );
+      }
+
+      if (this.$refs.menuItems && this.$refs.menuItems.children.length > 0) {
+        gsap.fromTo(
+          this.$refs.menuItems.children,
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, delay: 0.5, stagger: 0.1, ease: "power2.out" }
+        );
+      }
+
+      if (this.$refs.footerIcons) {
+        gsap.fromTo(
+          this.$refs.footerIcons,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: "power2.out", delay: 0.9 }
+        );
+      }
+    });
+
+  } else {
+    if (hamburgerIcon) {
+      hamburgerIcon.classList.remove('is-open');  // Rimuovi la classe .is-open
+    }
+    document.body.classList.remove('no-scroll');
+
+    if (this.$refs.modal) {
+      gsap.to(this.$refs.modal, {
+        y: '-100%',
+        duration: 0.4,
+        ease: "power2.in",
+        onComplete: () => this.resetTitleAndUnderline()
+      });
+    }
+
+    // Animazione di uscita per footerIcons quando si chiude il menu
+    if (this.$refs.footerIcons) {
+      gsap.to(this.$refs.footerIcons, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.in"
+      });
+    }
+  }
+},
   animateTitleAndUnderline() {
     this.$nextTick(() => {
       if (this.$refs.title && this.$refs.underline) {
@@ -156,8 +163,8 @@ export default {
 
         gsap.fromTo(
           this.$refs.underline,
-          { width: 0 },
-          { width: '100%', duration: 0.5, ease: "power2.out" }
+          { width: 0, opacity: 0 },
+          { width: '100%', opacity: 1, duration: 0.5, ease: "power2.out" }
         );
       }
     });
@@ -218,6 +225,7 @@ export default {
 .menu-fullscreen {
   inset: 0;
   transform: translateY(-100%);
+  transition: background-color 0.1s;
 }
 
 .menu-content {
@@ -242,5 +250,9 @@ export default {
 
 .footer {
   opacity: 0;
+}
+
+.menu-item-li a {
+  line-height: .6;
 }
 </style>

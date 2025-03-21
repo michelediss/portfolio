@@ -4,9 +4,9 @@
       <HeaderComponent :pageTitle="pageTitle" ref="header" />
     </div>
 
-    <div class="philosophy w-full lg:w-4/6 mx-auto pt-8" ref="philosophyContent">
+    <div class="philosophy w-full lg:w-4/6 mx-auto mt-10 md:mt-20 2xl:mt-40" ref="philosophyContent">
       <div class="philosophy-title">
-      <h1 class="mt-20 mb-12 heading text-4xl leading-tight">
+      <h1 class="mb-12 heading text-4xl leading-tight">
         Suspension of disbelief in digital design: a narrative approach to Ui/Ux
       </h1>
     </div>
@@ -59,7 +59,7 @@
       </p>
     </div>
 
-      <div class="philosophy-paragraph pb-8">
+      <div class="philosophy-paragraph">
       <p class="text-xl md:text-2xl paragraph text-start">
         In conclusion, the application of the suspension of disbelief in UI/UX design and development is integral to
         creating digital experiences that are engaging and memorable. By leveraging the principles of visual design,
@@ -77,7 +77,6 @@
       <SocialComponent/>
     </div>
   </div>
-  <MenuComponent />
 
 </template>
 
@@ -116,7 +115,8 @@ export default {
       tl.from(paragraph, { 
         opacity: 0, 
         y: 50, 
-        duration: 0.8 
+        duration: 0.6,
+        ease: 'power2.out'
       }, "-=0.4"); // Utilizzo di "-=0.4" per sovrapporre le animazioni
     });
   }

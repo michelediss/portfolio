@@ -2,11 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
     <title>Michele Paolino</title>
+
+    <!-- Meta Tag SEO -->
+    <meta name="description" content="My name is Michele Paolino, I'm a Napoli based web designer and developer.">
+    <meta name="keywords" content="Michele Paolino, web designer Naples, front-end developer, Vue.js, WordPress, UI design, GSAP, React">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="My name is Michele Paolino, I'm a Napoli based web designer and developer.">
+    <meta property="og:description" content="Vue, WordPress, Sass, Tailwind, Figma, React, UI design, Typography, Adobe, Bootstrap, GSAP, Git">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michelepaolino.me"> 
+    <meta property="og:image" content="/images/og-image.jpg"> 
+
+    <!-- Twitter Card Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="My name is Michele Paolino, I'm a Napoli based web designer and developer.">
+    <meta property="twitter:description" content="Vue, WordPress, Sass, Tailwind, Figma, React, UI design, Typography, Adobe, Bootstrap, GSAP, Git">
+    <meta property="twitter:image" content="/images/og-image.jpg"> 
+
     <style>
         body {
-            transition: background-color 0.6s ease-in-out; 
+            transition: background-color 0.4s ease-in-out; 
+            animation: fadeIn 1.5s ease-in-out forwards; /* Assegna correttamente l'animazione */
+            opacity: 0;
         }
 
         @keyframes fadeIn {
@@ -17,11 +38,26 @@
                 opacity: 1;
             }
         }
+
+        /* #carouselTitle, #underline {
+            opacity: 0;
+            visibility: hidden;
+        } */
     </style>
 </head>
-<body>
+<body class="opacity">
     <div id="app">
         <!-- Your Vue app will mount here -->
     </div>
 </body>
+<script>
+    // Genera dinamicamente una classe `style-n` e aggiungila al body
+    function assignRandomStyle() {
+      const randomNum = Math.floor(Math.random() * 12) + 1;
+      document.body.classList.add(`style-${randomNum}`);
+    }
+    
+    // Assegna la classe subito prima che la pagina venga renderizzata
+    assignRandomStyle();
+  </script>
 </html>

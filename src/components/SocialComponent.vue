@@ -1,9 +1,9 @@
 <template>
-    <footer class="flex justify-center w-full left-0 z-50">
+    <footer class="flex justify-start md:justify-center w-full left-0 z-50 flex-wrap">
 
-  <div class="container flex justify-center items-center relative inline-block w-auto mt-16 mb-8">
+  <div class="container flex items-center relative inline-block w-auto mt-16 2xl:scale-125 2xl:mt-32 mb-8">
     <!-- Icona Mail -->
-    <a href="mailto:hello@michelepaolino.me" target="_blank" class="icon flex items-center px-8">
+    <a id="email" aria-label="email" href="mailto:mail@michelepaolino.com" target="_blank" class="icon flex items-center pr-8 md:px-8">
       <svg xmlns="http://www.w3.org/2000/svg" 
         width="32" 
         height="32" 
@@ -19,7 +19,7 @@
     </a>
 
     <!-- Icona Linkedin -->
-    <a href="https://www.linkedin.com/in/michele-paolino/" target="_blank" class="icon flex items-center px-8">
+    <a id="linkedin" aria-label="linkedin" href="https://www.linkedin.com/in/michele-paolino/" target="_blank" class="icon flex items-center px-8">
       <svg xmlns="http://www.w3.org/2000/svg" 
         width="32" 
         height="32" 
@@ -31,7 +31,7 @@
     </a>
 
     <!-- Icona GitHub -->
-    <a href="https://github.com/michelediss?tab=repositories" target="_blank" class="icon flex items-center px-8">
+    <a id="github" aria-label="github" href="https://github.com/michelediss?tab=repositories" target="_blank" class="icon flex items-center px-8">
       <svg xmlns="http://www.w3.org/2000/svg" 
       width="32" 
       height="32" 
@@ -50,6 +50,10 @@
       </svg>
     </a>
   </div>
+  <!-- <div class="container w-full pb-8">
+    <p class="text-lg color-black">VAT 02137300766</p>
+    <p class="text-lg color-black">Napoli, Italia</p>
+  </div> -->
 </footer>
 
 </template>
