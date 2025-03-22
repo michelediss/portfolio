@@ -176,28 +176,5 @@ export function getRandomHSLuvColor() {
   `;
   document.head.appendChild(styleElement);
 
-  // ----------- AGGIUNTA: Creazione favicon SVG dinamica -----------
-  const faviconSvg = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="50" fill="${primaryHexColor}" />
-    </svg>
-  `;
-  // Codifica l'SVG in formato URI
-  const encodedSvg = encodeURIComponent(faviconSvg);
-  const faviconDataUrl = `data:image/svg+xml,${encodedSvg}`;
-
-  // Se esiste già un tag <link rel="icon"> lo aggiorna, altrimenti lo crea
-  let faviconLink = document.querySelector("link[rel='icon']");
-  if (faviconLink) {
-    faviconLink.href = faviconDataUrl;
-  } else {
-    faviconLink = document.createElement("link");
-    faviconLink.rel = "icon";
-    faviconLink.type = "image/svg+xml";
-    faviconLink.href = faviconDataUrl;
-    document.head.appendChild(faviconLink);
-  }
-  // -----------------------------------------------------------------
-
   return primaryHexColor;
 }
