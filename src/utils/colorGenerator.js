@@ -1,6 +1,6 @@
 // utils/colorGenerator.js
 
-import { Hsluv } from 'hsluv'; // Importa la classe Hsluv dalla libreria HSLuv per la gestione del colore
+import { Hsluv } from "hsluv"; // Importa la classe Hsluv dalla libreria HSLuv per la gestione del colore
 
 let lastHue = Math.floor(Math.random() * 360); // Inizializza l'ultima tonalità con un valore casuale tra 0 e 359
 // Soglia di contrasto personalizzabile per la leggibilità del testo
@@ -10,8 +10,8 @@ const contrastThreshold = 7; // Imposta una soglia di contrasto (4.5:1 è il min
 function hexToRgb(hex) {
   const bigint = parseInt(hex.slice(1), 16); // Converte il valore HEX in un numero intero
   const r = (bigint >> 16) & 255; // Estrae il componente rosso
-  const g = (bigint >> 8) & 255;  // Estrae il componente verde
-  const b = bigint & 255;         // Estrae il componente blu
+  const g = (bigint >> 8) & 255; // Estrae il componente verde
+  const b = bigint & 255; // Estrae il componente blu
   return [r, g, b];
 }
 
@@ -20,7 +20,9 @@ function relativeLuminance(r, g, b) {
   const [R, G, B] = [r, g, b].map((channel) => {
     const sRGB = channel / 255;
     // Conversione del canale da sRGB a linear RGB
-    return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+    return sRGB <= 0.03928
+      ? sRGB / 12.92
+      : Math.pow((sRGB + 0.055) / 1.055, 2.4);
   });
   const luminance = 0.2126 * R + 0.7152 * G + 0.0722 * B; // Calcola la luminanza usando i pesi standard per RGB
   return luminance;
@@ -33,7 +35,12 @@ function contrastRatio(l1, l2) {
 }
 
 // Funzione per determinare il colore di foreground (testo) basato sul contrasto WCAG
-function getForegroundColorBasedOnContrast(primaryColorHex, whiteColorHex, blackColorHex, threshold) {
+function getForegroundColorBasedOnContrast(
+  primaryColorHex,
+  whiteColorHex,
+  blackColorHex,
+  threshold
+) {
   const [r1, g1, b1] = hexToRgb(primaryColorHex); // Converte il colore primario in RGB
   const primaryLuminance = relativeLuminance(r1, g1, b1); // Calcola la luminanza relativa del colore primario
 
@@ -49,12 +56,16 @@ function getForegroundColorBasedOnContrast(primaryColorHex, whiteColorHex, black
 
   // Determina il colore di foreground migliore in base alla soglia di contrasto
   let chosenColor;
-  if (contrastWithWhite >= threshold && contrastWithWhite >= contrastWithBlack) {
+  if (
+    contrastWithWhite >= threshold &&
+    contrastWithWhite >= contrastWithBlack
+  ) {
     chosenColor = whiteColorHex;
   } else if (contrastWithBlack >= threshold) {
     chosenColor = blackColorHex;
   } else {
-    chosenColor = contrastWithWhite >= contrastWithBlack ? whiteColorHex : blackColorHex;
+    chosenColor =
+      contrastWithWhite >= contrastWithBlack ? whiteColorHex : blackColorHex;
   }
 
   return chosenColor;
@@ -83,11 +94,11 @@ export function getRandomHSLuvColor() {
   const lightness = Math.floor(Math.random() * (70 - 30 + 1)) + 35;
 
   const conv = new Hsluv();
-  
+
   conv.hsluv_h = hue;
   conv.hsluv_s = saturation;
   conv.hsluv_l = lightness;
-  
+
   conv.hsluvToHex();
   const primaryHexColor = conv.hex;
 
@@ -141,7 +152,7 @@ export function getRandomHSLuvColor() {
   document.body.style.color = foregroundColor;
 
   // Crea un elemento di stile per aggiungere dinamicamente le classi
-  const styleElement = document.createElement('style');
+  const styleElement = document.createElement("style");
   styleElement.innerHTML = `
     .text-color { color: ${foregroundColor}; }
     .fill { fill: ${foregroundColor}; }
@@ -164,6 +175,29 @@ export function getRandomHSLuvColor() {
     .dropdown-menu a:hover { background-color: ${blackForegroundHexColor}; }
   `;
   document.head.appendChild(styleElement);
+
+  // ----------- AGGIUNTA: Creazione favicon SVG dinamica -----------
+  const faviconSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="50" fill="${primaryHexColor}" />
+    </svg>
+  `;
+  // Codifica l'SVG in formato URI
+  const encodedSvg = encodeURIComponent(faviconSvg);
+  const faviconDataUrl = `data:image/svg+xml,${encodedSvg}`;
+
+  // Se esiste già un tag <link rel="icon"> lo aggiorna, altrimenti lo crea
+  let faviconLink = document.querySelector("link[rel='icon']");
+  if (faviconLink) {
+    faviconLink.href = faviconDataUrl;
+  } else {
+    faviconLink = document.createElement("link");
+    faviconLink.rel = "icon";
+    faviconLink.type = "image/svg+xml";
+    faviconLink.href = faviconDataUrl;
+    document.head.appendChild(faviconLink);
+  }
+  // -----------------------------------------------------------------
 
   return primaryHexColor;
 }
