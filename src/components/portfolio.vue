@@ -62,14 +62,14 @@ export default {
           url: "https://www.dubstone.it",
         },
         {
-          name: "Alessandra Piezzo",
-          role: "just code",
-          url: "https://alessandrapiezzo.com/",
-        },
-        {
           name: "Resta Abitante",
           role: "design & code",
           url: "https://restabitante.org/",
+        },
+        {
+          name: "Alessandra Piezzo",
+          role: "just code",
+          url: "https://alessandrapiezzo.com/",
         },
         {
           name: "Addolorata",
