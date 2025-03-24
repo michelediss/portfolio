@@ -14,4 +14,4 @@ git commit -m "$commit_message"
 git push origin main
 
 # 4. Committa e pusha la cartella dist sul ramo gh-pages usando subtree
-git subtree push --prefix dist origin gh-pages
+npm gh-pages -d dist

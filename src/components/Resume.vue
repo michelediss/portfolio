@@ -150,7 +150,7 @@ export default {
       skills: [
         {
           scope: "Frontend",
-          skill: "Vue.js, React, Tailwind CSS, Bootstrap",
+          skill: "Vue.js, React, Tailwind, Bootstrap",
         },
         {
           scope: "Backend",
