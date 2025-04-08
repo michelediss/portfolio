@@ -129,22 +129,22 @@ export default {
       pageTitle: "Resume",
       items: [
         {
-          job: "Dopolavoro ",
+          job: "Dopolavoro",
           position: "Web developer",
           description:
-            "I specialize in creating websites that are both visually stunning and functionally robust, maintaining the firm's reputation for design excellence. I continuously explore and implement new web design trends, ensuring our offerings remain innovative and competitive. By integrating technical and design expertise, I create cohesive and engaging user experiences.",
+            "My primary responsibility at Dopolavoro centered on a critical translation process: transforming the studio's meticulously developed visual identities into fully realized websites and web applications. This role demanded an exceptional level of precision in preserving the nuanced visual language conceived by the design team while ensuring optimal digital functionality. I specialized in creating digital experiences that were not just technically sound, but true visual narratives, seamlessly converting complex brand identities into interactive, responsive web solutions that maintained the studio's renowned design excellence.",
         },
         {
           job: "Sari Advertising",
           position: "Web designer & developer",
           description:
-            "I played an integral role in a team focused on delivering advanced web designs and strategic advertising solutions. I developed SEO-optimized websites to enhance client visibility and improve user engagement and conversion rates. I worked closely with cross-functional teams to ensure a unified and effective brand message.",
+            "At Sari Advertising I was a driving force in high-velocity e-commerce web development, successfully delivering up to 20 fully functional e-commerce websites annually. My role extended beyond technical implementation, as I coordinated cross-functional teams of designers and copywriters to ensure cohesive project execution. By carefully managing these creative professionals, I transformed complex client requirements into strategically crafted digital storefronts that maximized SEO performance and user conversion rates. This approach demanded a unique blend of technical expertise, team leadership, and marketing insight, allowing me to create e-commerce platforms that were both technically robust and commercially compelling.",
         },
         {
           job: "Becoming Lab",
           position: "Web designer & developer",
           description:
-            "I led a team in creating web applications and marketing solutions, with a focus on enhancing clients' digital presence. I managed projects from concept to completion, ensuring timelines were met without compromising on quality. I built and maintained strong client relationships to align projects with their business goals and brand identity.",
+            "At Becoming Lab, I took full ownership of client relationships, managing every aspect of web development projects from initial consultation to final delivery. My approach went beyond traditional design and development, positioning me as a comprehensive point of contact who handled client interactions with good care and strategic insight. I independently managed client communications, deeply understanding their unique business objectives and translating those insights into tailored web applications and marketing solutions that precisely aligned with their brand identity.",
         },
       ],
       skills: [
@@ -154,7 +154,7 @@ export default {
         },
         {
           scope: "Backend",
-          skill: "Node.js, PHP",
+          skill: "PHP, Laravel",
         },
         {
           scope: "CMS",

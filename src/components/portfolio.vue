@@ -57,7 +57,7 @@ export default {
           url: "https://www.jesopazzo.org",
         },
         {
-          name: "Dubstone",
+          name: "Dubstone Festival",
           role: "design & code",
           url: "https://www.dubstone.it",
         },
@@ -75,6 +75,11 @@ export default {
           name: "Addolorata",
           role: "just code",
           url: "https://addolorata.lol/",
+        },
+        {
+          name: "Le macchine non possono pregare",
+          role: "just code",
+          url: "https://lmnpp.it/",
         },
       ],
     };
