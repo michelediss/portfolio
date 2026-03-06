@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <title>Michele Paolino</title>
+
+    <!-- Meta Tag SEO -->
+    <meta name="description" content="michelepaolino.com - portfolio">
+    <meta name="keywords" content="Vue, WordPress, Sass, Tailwind, Figma, React, UI design, Typography, Adobe, Bootstrap, GSAP, Git">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="michelepaolino.com - portfolio">
+    <meta property="og:description" content="My name is Michele Paolino, I'm a Napoli based web designer and developer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michelepaolino.com"> 
+    <meta property="og:image" content="/images/og-image.jpg"> 
+
+    <!-- Twitter Card Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="michelepaolino.com - portfolio.">
+    <meta property="twitter:description" content="My name is Michele Paolino, I'm a Napoli based web designer and developer.">
+    <meta property="twitter:image" content="/images/og-image.jpg"> 
+
+    <style>
+        body {
+            transition: background-color 0.4s ease-in-out; 
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="opacity">
+    <div id="app">
+        <!-- Your Vue app will mount here -->
+    </div>
+</body>
+<script>
+    // SPA redirect fallback for GitHub Pages.
+    // Converts /route to /?/route so index.html can restore client routing.
+    const pathSegmentsToKeep = 0;
+    const l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+
+    // Genera dinamicamente una classe `style-n` e aggiungila al body
+    function assignRandomStyle() {
+      const randomNum = Math.floor(Math.random() * 12) + 1;
+      document.body.classList.add(`style-${randomNum}`);
+    }
+    
+    // Assegna la classe subito prima che la pagina venga renderizzata
+    assignRandomStyle();
+  </script>
+</html>
