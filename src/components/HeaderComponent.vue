@@ -3,7 +3,7 @@
     <nav id="nav-back" class="flex pt-6 w-full lg:w-5/6 mx-auto">
       <div class="flex justify-start md:justify-center w-full">
         <div class="title-page-container">
-          <h1 ref="title" class="title-page-text text-color text-2xl 2xl:text-3xl heading uppercase">{{ pageTitle }}</h1>
+          <h1 ref="title" class="title-page-text text-color text-lg 2xl:text-xl heading uppercase">{{ pageTitle }}</h1>
           <div ref="underline" class="title-page-underline bg-secondary-color h-0.5 bg-slate-900"></div>
         </div>
       </div>
