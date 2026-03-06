@@ -20,10 +20,20 @@ npm run serve
 
 Workflow consigliato:
 
+1. Lavora e pusha i sorgenti su `main`.
+2. GitHub Actions esegue build e pubblica automaticamente `dist/` su `gh-pages`.
+
+Manuale (fallback locale):
+
 1. `npm run build`
 2. `npm run deploy`
 
 Script helper disponibile: [`deploy.sh`](/home/miche/portfolio/deploy.sh).
+
+## Strategia branch
+
+- `main`: contiene solo il codice sorgente del progetto.
+- `gh-pages`: contiene solo i file statici buildati necessari al sito online.
 
 ## Note tecniche
 
