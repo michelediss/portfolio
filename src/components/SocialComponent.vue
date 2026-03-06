@@ -3,7 +3,7 @@
 
   <div class="container flex items-center relative inline-block w-auto mt-16 2xl:scale-125 2xl:mt-32 mb-8">
     <!-- Icona Mail -->
-    <a id="email" aria-label="email" href="mailto:mail@michelepaolino.com" target="_blank" class="icon flex items-center pr-8 md:px-8">
+    <a id="email" aria-label="email" href="mailto:mic.paolino@gmail.com" target="_blank" class="icon flex items-center pr-8 md:px-8">
       <svg xmlns="http://www.w3.org/2000/svg" 
         width="32" 
         height="32" 

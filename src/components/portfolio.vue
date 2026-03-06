@@ -13,7 +13,30 @@
             </div>
             <div class="w-full lg:w-8/12 flex">
               <div class="w-6/12 justify-self-start lg:justify-self-center text-start lg:text-center flex justify-start lg:justify-center items-end lg:items-center mt-3 md:mt-0">
-                <h5 class="uppercase text-base paragraph">{{ project.role }}</h5>
+                <h5 class="uppercase text-xs paragraph">
+                  <template v-if="project.role === 'design & code'">
+                    Design &amp; Development
+                  </template>
+                  <template v-else-if="project.role === 'just code'">
+                    Development &mdash; Design by
+                    <template v-if="project.designByUrl">
+                      <a
+                        :href="project.designByUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline"
+                      >
+                        {{ project.designByLabel }}
+                      </a>
+                    </template>
+                    <template v-else>
+                      {{ project.designByLabel }}
+                    </template>
+                  </template>
+                  <template v-else>
+                    {{ project.role }}
+                  </template>
+                </h5>
               </div>
               <div class="w-6/12 text-end flex justify-end items-end">
                 <a :href="project.url" target="_blank" v-hover-animate rel="noopener noreferrer" class="button text-base paragraph border-2 border-color rounded-full px-8 py-1">
@@ -50,14 +73,40 @@ export default {
       pageTitle: "Portfolio",
       projects: [
         {
-          name: "Je So' Pazzo",
-          role: "just code",
-          url: "https://www.jesopazzo.org",
-        },
-        {
           name: "Dubstone Festival",
           role: "design & code",
           url: "https://www.dubstone.it",
+        },
+        {
+          name: "Potere al Popolo",
+          role: "just code",
+          url: "https://poterealpopolo.org/",
+          designByLabel: "Salvatore Caruso",
+        },
+        {
+          name: "Toil",
+          role: "design & code",
+          url: "https://toil.it/",
+        },
+        {
+          name: "Alessandra Piezzo",
+          role: "just code",
+          url: "https://alessandrapiezzo.com/",
+          designByLabel: "Alessandra Piezzo",
+          designByUrl: "https://alessandrapiezzo.com/",
+        },
+        {
+          name: "Campi Deantera",
+          role: "just code",
+          url: "https://deantera.it/",
+          designByLabel: "Dopolavoro",
+          designByUrl: "https://dopolavoro.org",
+        },
+        {
+          name: "Je So' Pazzo",
+          role: "just code",
+          url: "https://www.jesopazzo.org",
+          designByLabel: "Salvatore Caruso",
         },
         {
           name: "Resta Abitante",
@@ -65,19 +114,10 @@ export default {
           url: "https://restabitante.org/",
         },
         {
-          name: "Alessandra Piezzo",
-          role: "just code",
-          url: "https://alessandrapiezzo.com/",
-        },
-        {
           name: "Addolorata",
           role: "just code",
           url: "https://addolorata.lol/",
-        },
-        {
-          name: "Le macchine non possono pregare",
-          role: "just code",
-          url: "https://lmnpp.it/",
+          designByLabel: "Sigiu Bellettini",
         },
       ],
     };

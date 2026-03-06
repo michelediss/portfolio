@@ -7,7 +7,7 @@
         <nav id="nav-back" class="flex my-6 w-full lg:w-5/6 mx-auto justify-start md:justify-center">
           <div class="flex w-auto">
             <div class="title-page-container">
-              <h1 ref="carouselTitle" class="text-color title-page-text text-2xl 2xl:text-3xl heading">{{
+              <h1 ref="carouselTitle" class="text-color title-page-text text-2xl 2xl:text-3xl heading uppercase">{{
                 currentItemData.title }}</h1>
               <div ref="underline" class="bg-secondary-color title-page-underline h-0.5 bg-slate-900"></div>
             </div>

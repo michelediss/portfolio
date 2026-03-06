@@ -1,6 +1,6 @@
 //router/index.js
 
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../components/home.vue';
 import PortfolioPage from '../components/portfolio.vue';
 import ResumePage from '../components/Resume.vue';
@@ -31,7 +31,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
   // Aggiungi l'opzione scrollBehavior per gestire lo scroll al top
   scrollBehavior(to, from, savedPosition) {

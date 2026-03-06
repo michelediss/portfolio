@@ -30,3 +30,4 @@ Script helper disponibile: [`deploy.sh`](/home/miche/portfolio/deploy.sh).
 - `MenuComponent` e listener globali sono gestiti a livello applicazione.
 - La gestione skin/tema dinamica e shortcut (`S`, double tap mobile) è centralizzata in `src/utils/skinController.js`.
 - Le 12 coppie font sono self-hosted in `public/fonts` con preload in `public/index.html` e warmup runtime via `document.fonts.load`.
+- Il routing usa `createWebHistory()` (URL senza `#`) con fallback SPA GitHub Pages via `public/404.html` + restore route in `public/index.html`.

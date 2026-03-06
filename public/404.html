@@ -43,6 +43,18 @@
     </div>
 </body>
 <script>
+    // SPA redirect fallback for GitHub Pages.
+    // Converts /route to /?/route so index.html can restore client routing.
+    const pathSegmentsToKeep = 0;
+    const l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+
     // Genera dinamicamente una classe `style-n` e aggiungila al body
     function assignRandomStyle() {
       const randomNum = Math.floor(Math.random() * 12) + 1;
