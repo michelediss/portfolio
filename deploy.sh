@@ -13,5 +13,5 @@ git reset dist  # Rimuove dist dall'indice, in modo che non venga incluso nel co
 git commit -m "$commit_message"
 git push origin main
 
-# 4. Committa e pusha la cartella dist sul ramo gh-pages usando subtree
-npm gh-pages -d dist
+# 4. Pubblica la cartella dist su gh-pages
+npm run deploy

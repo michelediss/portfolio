@@ -107,21 +107,18 @@
       <SocialComponent svgClass="fill" />
     </div>
   </section>
-  <MenuComponent />
 </template>
 
 <script>
 import { gsap } from "gsap";
 import { nextTick } from "vue"; // Importa nextTick da Vue
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import MenuComponent from "@/components/MenuComponent.vue";
 import SocialComponent from "@/components/SocialComponent.vue";
 
 export default {
   name: "Resume",
   components: {
     HeaderComponent,
-    MenuComponent,
     SocialComponent,
   },
   data() {
@@ -244,7 +241,7 @@ export default {
     });
 
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener("click", this.closeDropdown);
   },
 };

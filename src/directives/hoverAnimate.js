@@ -2,27 +2,24 @@
 
 export default {
   mounted(el) {
-    // Aggiungi gli eventi hover al montaggio dell'elemento
-    el.addEventListener('mouseenter', () => {
-      el.classList.add('bg-secondary-color'); // Aggiungi la classe quando il mouse entra
-      el.classList.add('main-text-color'); // Aggiungi anche la nuova classe quando il mouse entra
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      el.classList.remove('bg-secondary-color'); // Rimuovi la classe quando il mouse lascia
-      el.classList.remove('main-text-color'); // Rimuovi anche la nuova classe quando il mouse lascia
-    });
-  },
-  unmounted(el) {
-    // Rimuovi gli eventi hover quando l'elemento viene distrutto
-    el.removeEventListener('mouseenter', () => {
+    const onMouseEnter = () => {
       el.classList.add('bg-secondary-color');
       el.classList.add('main-text-color');
-    });
-    
-    el.removeEventListener('mouseleave', () => {
+    };
+    const onMouseLeave = () => {
       el.classList.remove('bg-secondary-color');
       el.classList.remove('main-text-color');
-    });
+    };
+
+    el.__hoverAnimateHandlers = { onMouseEnter, onMouseLeave };
+    el.addEventListener('mouseenter', onMouseEnter);
+    el.addEventListener('mouseleave', onMouseLeave);
+  },
+  unmounted(el) {
+    const handlers = el.__hoverAnimateHandlers;
+    if (!handlers) return;
+    el.removeEventListener('mouseenter', handlers.onMouseEnter);
+    el.removeEventListener('mouseleave', handlers.onMouseLeave);
+    delete el.__hoverAnimateHandlers;
   }
 };

@@ -1,12 +1,11 @@
 //router/index.js
 
 import { createRouter, createWebHashHistory } from 'vue-router';
-import HomePage from '../components/Home.vue';
-import PortfolioPage from '../components/Portfolio.vue';
+import HomePage from '../components/home.vue';
+import PortfolioPage from '../components/portfolio.vue';
 import ResumePage from '../components/Resume.vue';
 import PhilosophyPage from '../components/Philosophy.vue';
-import { getRandomHSLuvColor } from '../utils/colorGenerator'; // Importa la funzione di generazione colore
-import { fontAssign } from '../utils/fontAssign'; // Importa la funzione di scelta font
+import { ensureBodyStyleClass, applyRandomColor } from '../utils/skinController';
 
 const routes = [
   {
@@ -48,37 +47,9 @@ const router = createRouter({
 
 // Hook del router per cambiare il colore di sfondo del body ad ogni cambio di pagina
 router.beforeEach((to, from, next) => {
-  // Genera un colore HSLuv casuale
-  getRandomHSLuvColor();
-
-  // Controlla se c'è già una classe style-[random] assegnata al body
-  const hasStyleClass = Array.from(document.body.classList).some(className =>
-    className.startsWith('style-')
-  );
-
-  // Se la classe style-[random] non è presente, esegui fontAssign
-  if (!hasStyleClass) {
-    fontAssign();
-  }
-
+  applyRandomColor();
+  ensureBodyStyleClass();
   next();
 });
-
-
-// Funzione per gestire il doppio tap
-function handleDoubleTap() {
-  getRandomHSLuvColor();
-  fontAssign();
-}
-
-// Aggiungi un listener per la barra spaziatrice
-window.addEventListener('keydown', (event) => {
-  if (event.code === 'KeyS') {
-    getRandomHSLuvColor();
-    fontAssign();
-  }
-});
-
-export { handleDoubleTap };
 
 export default router;

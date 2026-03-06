@@ -83,7 +83,6 @@
 <script>
 import { gsap } from "gsap";
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import MenuComponent from "@/components/MenuComponent.vue";
 import SocialComponent from "@/components/SocialComponent.vue";
 
 
@@ -91,7 +90,6 @@ export default {
   name: "Philosophy",
   components: {
     HeaderComponent,
-    MenuComponent,
     SocialComponent
   },
   data() {

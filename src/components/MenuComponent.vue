@@ -34,14 +34,14 @@
         <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
             <router-link to="/" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
-              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Home</router-link>
+              @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Home</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
         </li>
         <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
             <router-link to="/portfolio" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
-              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Portfolio</router-link>
+              @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Portfolio</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
@@ -49,7 +49,7 @@
         <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
             <router-link to="/resume" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
-              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Resume</router-link>
+              @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Resume</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
@@ -57,7 +57,7 @@
         <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
             <router-link to="/vision" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
-              @click.native="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Vision</router-link>
+              @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Vision</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 

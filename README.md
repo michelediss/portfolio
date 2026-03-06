@@ -1,31 +1,32 @@
-progetto-vue/
-│
-├── node_modules/              # Dipendenze del progetto installate
-│
-├── public/                    # File statici che non vengono processati da Webpack
-│   ├── favicon.ico            # Icona del sito
-│   └── index.html             # Template HTML principale
-│
-├── src/                       # Codice sorgente dell'applicazione
-│   ├── assets/                # Risorse come immagini e stili
-│   │   ├── images/            # Immagini utilizzate nell'applicazione
-│   │   └── styles/            # Stili SASS/SCSS
-│   │       ├── main.scss      # File SASS principale
-│   │       └── _variables.scss # Partial SASS per variabili
-│   │
-│   ├── components/            # Componenti Vue
-│   │   ├── HomePage.vue       # Componente per la pagina Home
-│   │   ├── PortfolioPage.vue  # Componente per la pagina Portfolio
-│   │   └── CVPage.vue         # Componente per la pagina Curriculum Vitae
-│   │
-│   ├── router/                # Configurazione del router Vue
-│   │   └── index.js           # File di configurazione del router
-│   │
-│   ├── App.vue                # Componente radice dell'applicazione
-│   └── main.js                # Punto di ingresso JavaScript dell'applicazione
-│
-├── .gitignore                 # Specifica quali file e cartelle ignorare in git
-├── babel.config.js            # Configurazione di Babel
-├── package.json               # Gestisce le dipendenze e gli script del progetto
-├── package-lock.json          # Blocco delle versioni delle dipendenze
-└── README.md                  # Documentazione del progetto
+# Portfolio - Vue 3 + Vue CLI
+
+Portfolio personale pubblicato su GitHub Pages.
+
+## Setup locale
+
+```bash
+npm ci
+npm run serve
+```
+
+## Script principali
+
+- `npm run serve`: avvia ambiente di sviluppo.
+- `npm run build`: genera output di produzione in `dist/`.
+- `npm run lint`: esegue lint su `src/` (`.js` e `.vue`).
+- `npm run deploy`: pubblica `dist/` su `gh-pages`.
+
+## Deploy
+
+Workflow consigliato:
+
+1. `npm run build`
+2. `npm run deploy`
+
+Script helper disponibile: [`deploy.sh`](/home/miche/portfolio/deploy.sh).
+
+## Note tecniche
+
+- `MenuComponent` e listener globali sono gestiti a livello applicazione.
+- La gestione skin/tema dinamica e shortcut (`S`, double tap mobile) è centralizzata in `src/utils/skinController.js`.
+- Le 12 coppie font sono self-hosted in `public/fonts` con preload in `public/index.html` e warmup runtime via `document.fonts.load`.

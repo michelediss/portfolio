@@ -70,13 +70,11 @@
     </div>
   </div>
 
-  <MenuComponent />
 </template>
 
 <script>
 import { gsap } from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
-import MenuComponent from "@/components/MenuComponent.vue";
 import SocialComponent from "@/components/SocialComponent.vue";
 
 gsap.registerPlugin(CSSPlugin);
@@ -84,7 +82,6 @@ gsap.registerPlugin(CSSPlugin);
 export default {
   name: "Home",
   components: {
-    MenuComponent,
     SocialComponent
   },
   data() {
@@ -197,32 +194,6 @@ export default {
         });
       }
     },
-    // Modifica fontAssign per evitare che attivi le animazioni
-    fontAssign() {
-      // Disabilita temporaneamente le animazioni legate al carosello
-      this.isFontAssignActive = true;
-
-      let randomNum;
-      do {
-        randomNum = Math.floor(Math.random() * 12) + 1;
-      } while (randomNum === lastRandomNum);
-      lastRandomNum = randomNum;
-
-      // Rimuovi le classi esistenti che iniziano con "style-"
-      document.body.classList.forEach((className) => {
-        if (className.startsWith('style-')) {
-          document.body.classList.remove(className);
-        }
-      });
-
-      // Aggiungi la nuova classe dinamica
-      document.body.classList.add(`style-${randomNum}`);
-
-      // Riabilita le animazioni dopo un breve ritardo (per completare il cambio di stile)
-      setTimeout(() => {
-        this.isFontAssignActive = false;
-      }, 500);  // Attendi 500ms per completare il cambio di font
-    },
     setVH() {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -297,7 +268,7 @@ export default {
     this.setVH();
     window.addEventListener('resize', this.setVH);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.$refs.swiper && this.$refs.swiper.swiper) {
       this.$refs.swiper.swiper.off('slideChange', this.handleSlideChange);
     }

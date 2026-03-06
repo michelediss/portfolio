@@ -5,11 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "eslint --ext .js,.vue src",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "autoprefixer": "^10",
     "braces": "^3.0.3",
     "contrast-js": "^0.0.3",
     "core-js": "^3.6.5",
@@ -19,26 +18,30 @@
     "hsluv": "^1.0.1",
     "ip": "^2.0.1",
     "micromatch": "^4.0.8",
-    "node-sass": "^9.0.0",
     "swiper": "^11.1.12",
-    "tailwindcss": "^3",
     "tar": "^6.2.1",
     "vue": "^3.4.38",
     "vue-router": "^4.0.0-0",
     "vueperslides": "^3.5.1",
-    "vuex": "^4.0.2",
     "webpack-dev-middleware": "^7.4.2",
     "ws": "^8.18.0"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
     "@vue/cli-service": "^5.0.8",
     "@vue/compiler-sfc": "^3.0.0",
     "autoprefixer": "^10.4.17",
+    "@babel/eslint-parser": "^7.27.1",
+    "eslint": "^9.22.0",
+    "eslint-plugin-vue": "^9.33.0",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.41",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
     "tailwindcss": "^3.4.1",
+    "vue-eslint-parser": "^9.4.3",
     "vue-cli-plugin-tailwind": "~3.0.0",
     "webpack": "^5.94.0"
   }
