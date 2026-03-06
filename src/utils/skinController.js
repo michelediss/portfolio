@@ -1,6 +1,8 @@
 import { getRandomHSLuvColor } from "./colorGenerator";
 import { fontAssign } from "./fontAssign";
 
+let isFontWarmupDone = false;
+
 export function ensureBodyStyleClass() {
   const hasStyleClass = Array.from(document.body.classList).some((className) =>
     className.startsWith("style-")
@@ -21,6 +23,7 @@ export function applyRandomColor() {
 
 export function setupGlobalSkinShortcuts() {
   const handleKeydown = (event) => {
+    if (!isFontWarmupDone) return;
     if (event.code === "KeyS") {
       applyRandomSkin();
     }
@@ -29,6 +32,7 @@ export function setupGlobalSkinShortcuts() {
   let lastTap = 0;
   const doubleTapTimeout = 300;
   const handleTouchStart = () => {
+    if (!isFontWarmupDone) return;
     const currentTime = Date.now();
     const tapInterval = currentTime - lastTap;
     if (tapInterval < doubleTapTimeout && tapInterval > 0) {
@@ -46,8 +50,52 @@ export function setupGlobalSkinShortcuts() {
   };
 }
 
+function warmupStyleRender() {
+  const container = document.createElement("div");
+  container.setAttribute("aria-hidden", "true");
+  container.style.position = "fixed";
+  container.style.left = "-9999px";
+  container.style.top = "-9999px";
+  container.style.visibility = "hidden";
+  container.style.pointerEvents = "none";
+  container.style.contain = "layout style paint";
+
+  for (let i = 1; i <= 12; i += 1) {
+    const styleRoot = document.createElement("div");
+    styleRoot.className = `style-${i}`;
+
+    const heading = document.createElement("div");
+    heading.className = "heading";
+    heading.textContent = "Warmup Heading";
+
+    const paragraph = document.createElement("div");
+    paragraph.className = "paragraph";
+    paragraph.textContent = "Warmup paragraph for font rendering.";
+
+    styleRoot.appendChild(heading);
+    styleRoot.appendChild(paragraph);
+    container.appendChild(styleRoot);
+  }
+
+  document.body.appendChild(container);
+  container.getBoundingClientRect();
+  Array.from(container.children).forEach((node) => node.getBoundingClientRect());
+
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        container.remove();
+        resolve();
+      });
+    });
+  });
+}
+
 export function warmupSelfHostedFonts() {
-  if (!("fonts" in document)) return Promise.resolve();
+  if (!("fonts" in document)) {
+    isFontWarmupDone = true;
+    return Promise.resolve();
+  }
 
   const fontDescriptors = [
     "400 1rem Average",
@@ -80,5 +128,10 @@ export function warmupSelfHostedFonts() {
   ];
 
   const jobs = fontDescriptors.map((descriptor) => document.fonts.load(descriptor));
-  return Promise.allSettled(jobs);
+  return Promise.allSettled(jobs)
+    .then(() => warmupStyleRender())
+    .catch(() => {})
+    .finally(() => {
+      isFontWarmupDone = true;
+    });
 }
