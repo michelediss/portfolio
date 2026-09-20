@@ -94,7 +94,7 @@ export default {
         },
         {
           title: "Skills",
-          text: "Vue, WordPress, Sass, Tailwind, <br>Figma, React, UI design, Typography, <br>Adobe, Bootstrap, GSAP, Git",
+          text: "PHP, Laravel, Vue.js, TypeScript, <br>WordPress, WooCommerce, Tailwind, <br>Docker, Git, LangChain, UI/UX",
         },
         {
           title: "The Logical Theme",

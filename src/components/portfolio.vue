@@ -15,7 +15,22 @@
               <div class="w-6/12 justify-self-start lg:justify-self-center text-start lg:text-center flex justify-start lg:justify-center items-end lg:items-center mt-3 md:mt-0">
                 <h5 class="uppercase text-xs paragraph">
                   <template v-if="project.role === 'design & code'">
-                    Design &amp; Development
+                    Design &amp; Development<template v-if="project.artDirectionByLabel">
+                      &mdash; Art direction by
+                      <template v-if="project.artDirectionByUrl">
+                        <a
+                          :href="project.artDirectionByUrl"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="underline"
+                        >
+                          {{ project.artDirectionByLabel }}
+                        </a>
+                      </template>
+                      <template v-else>
+                        {{ project.artDirectionByLabel }}
+                      </template>
+                    </template>
                   </template>
                   <template v-else-if="project.role === 'just code'">
                     Development &mdash; Design by
@@ -73,12 +88,17 @@ export default {
       pageTitle: "Portfolio",
       projects: [
         {
+          name: "Veronica Boccuni",
+          role: "design & code",
+          url: "https://veronicaboccuni.art/",
+        },
+        {
           name: "Dubstone Festival",
           role: "design & code",
           url: "https://www.dubstone.it",
         },
         {
-          name: "Potere al Popolo",
+          name: "Potere al Popolo!",
           role: "just code",
           url: "https://poterealpopolo.org/",
           designByLabel: "Salvatore Caruso",
@@ -87,6 +107,8 @@ export default {
           name: "Toil",
           role: "design & code",
           url: "https://toil.it/",
+          artDirectionByLabel: "Dopolavoro",
+          artDirectionByUrl: "https://dopolavoro.org",
         },
         {
           name: "Alessandra Piezzo",

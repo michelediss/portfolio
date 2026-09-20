@@ -31,32 +31,32 @@
 
     <div class="menu-content flex flex-col items-start md:items-center text-white">
       <ul class="text-start md:text-center" ref="menuItems">
-        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
+        <li class="paragraph my-5 md:my-6 xl:my-8 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
+            <router-link to="/" class="text-5xl md:text-6xl text-menu-color leading-none my-0 transition-opacity duration-200 hover:opacity-80 focus-visible:opacity-80"
               @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Home</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
         </li>
-        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
+        <li class="paragraph my-5 md:my-6 xl:my-8 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/portfolio" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
+            <router-link to="/portfolio" class="text-5xl md:text-6xl text-menu-color leading-none my-0 transition-opacity duration-200 hover:opacity-80 focus-visible:opacity-80"
               @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Portfolio</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
         </li>
-        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
+        <li class="paragraph my-5 md:my-6 xl:my-8 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/resume" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
+            <router-link to="/resume" class="text-5xl md:text-6xl text-menu-color leading-none my-0 transition-opacity duration-200 hover:opacity-80 focus-visible:opacity-80"
               @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Resume</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
 
         </li>
-        <li class="paragraph my-8 md:my-10 lg:my-8 xl:my-12 menu-item-li">
+        <li class="paragraph my-5 md:my-6 xl:my-8 menu-item-li">
           <div class="inline-block w-auto menu-item-wrapper">
-            <router-link to="/vision" class="text-5xl md:text-6xl xl:text-5xl 2xl:text-6xl text-menu-color my-0"
+            <router-link to="/vision" class="text-5xl md:text-6xl text-menu-color leading-none my-0 transition-opacity duration-200 hover:opacity-80 focus-visible:opacity-80"
               @click="toggleMenu"><span class="inline md:hidden text-2xl relative bottom-1">&#8226</span> Vision</router-link>
             <div class="w-0 h-1 bg-secondary-menu-color menu-item-line"></div>
           </div>
@@ -238,10 +238,13 @@ export default {
   }
 }
 
-.menu-item-wrapper:hover {
-  .menu-item-line {
-    width: 100%;
-  }
+.menu-item-wrapper:hover .menu-item-line,
+.menu-item-wrapper:focus-within .menu-item-line {
+  width: 100%;
+}
+
+.menu-item-wrapper .router-link-exact-active + .menu-item-line {
+  width: 100%;
 }
 
 .title-page-underline {
@@ -252,7 +255,11 @@ export default {
   opacity: 0;
 }
 
-.menu-item-li a {
-  line-height: .6;
+/* Schermi bassi (es. landscape mobile): blocco nav compatto */
+@media (max-height: 600px) {
+  .menu-content .menu-item-li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 </style>
