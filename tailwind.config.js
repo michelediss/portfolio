@@ -17,6 +17,7 @@ const customFontSizeScale = generateTypographicScale(
 // Configurazione di Tailwind CSS
 module.exports = {
   content: [
+    './index.html',
     './public/**/*.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],

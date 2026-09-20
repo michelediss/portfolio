@@ -88,8 +88,8 @@
     <div id="app">
         <!-- Your Vue app will mount here -->
     </div>
-</body>
-<script>
+    <script type="module" src="/src/main.js"></script>
+    <script>
     // Genera dinamicamente una classe `style-n` e aggiungila al body
     function assignRandomStyle() {
       const randomNum = Math.floor(Math.random() * 12) + 1;
@@ -99,4 +99,5 @@
     // Assegna la classe subito prima che la pagina venga renderizzata
     assignRandomStyle();
   </script>
+</body>
 </html>
